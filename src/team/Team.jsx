@@ -2,6 +2,7 @@ import { Card, Col, Row } from "antd";
 import React from "react";
 import countries from "../constants/countries";
 import playerTypes from "../constants/playerTypes";
+import Slots from "../shared/Slots";
 import TeamCover from "./TeamCover";
 
 const Team = ({ team }) => {
@@ -16,9 +17,12 @@ const Team = ({ team }) => {
         <Col span={10}>
           {countries.map((c, i) => (
             <Row key={i} justify="space-between">
-              <Col span={12}>{c}</Col>
+              <Col span={12}>{c.name}</Col>
               <Col span={12} style={{ justifyContent: "end" }}>
-                {team.players.filter((p) => p.country === c).length}
+                <Slots
+                  max={c.maxAllowed}
+                  value={team.players.filter((p) => p.country === c).length}
+                ></Slots>
               </Col>
             </Row>
           ))}
@@ -26,9 +30,12 @@ const Team = ({ team }) => {
         <Col span={10}>
           {playerTypes.map((type, i) => (
             <Row key={i} justify="space-between">
-              <Col span={12}>{type}</Col>
+              <Col span={12}>{type.type}</Col>
               <Col span={12}>
-                {team.players.filter((p) => p.type === type).length}
+                <Slots
+                  max={type.maxAllowed}
+                  value={team.players.filter((p) => p.type === type).length}
+                ></Slots>
               </Col>
             </Row>
           ))}
