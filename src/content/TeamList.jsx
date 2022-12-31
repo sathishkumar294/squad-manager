@@ -1,13 +1,13 @@
 import { Segmented } from "antd";
 import React from "react";
 import teams from "../constants/teams";
-import TeamCover from "../team/TeamCover";
+import TeamCard from "../team/TeamCard";
 
 const TeamList = () => {
   return (
     <Segmented block
       options={teams.map((team, i) => ({
-        label: <TeamCover team={team} key={i}></TeamCover>,
+        label: <TeamCard team={team} key={i}></TeamCard>,
         value: team.name,
       }))}
     ></Segmented>
