@@ -1,12 +1,20 @@
 import { Segmented } from "antd";
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectTeams } from "../app/store/teams";
+import { useDispatch, useSelector } from "react-redux";
+import { addPlayerAsync, selectTeams } from "../app/store/teams";
 import TeamCard from "../team/TeamCard";
 
 const TeamList = () => {
   const teams = useSelector(selectTeams);
-  console.log({ teams });
+  const dispatch = useDispatch();
+  const onTeamSelect = (team) => {
+    dispatch(
+      addPlayerAsync(
+        { name: "Virat Kohli", type: "Batsman", country: "IND" },
+        team
+      )
+    );
+  };
   return (
     <Segmented
       block
@@ -14,6 +22,7 @@ const TeamList = () => {
         label: <TeamCard team={team} key={i}></TeamCard>,
         value: team.name,
       }))}
+      onChange={onTeamSelect}
     ></Segmented>
   );
 };

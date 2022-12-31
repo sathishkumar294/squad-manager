@@ -3,6 +3,6 @@ import { teamSlice } from "./slice";
 const { addPlayer, removePlayer } = teamSlice.actions;
 
 export const addPlayerAsync = (player, team) => (dispatch) =>
-  dispatch(addPlayer({ payload: { player, team } }));
+  dispatch(addPlayer({ player, team }));
 export const removePlayerAsync = (player, team) => (dispatch) =>
-  dispatch(removePlayer({ payload: { player, team } }));
+  dispatch(removePlayer({ player, team }));

@@ -21,7 +21,7 @@ const Team = ({ team }) => {
               <Col span={12} style={{ justifyContent: "end" }}>
                 <Slots
                   max={c.maxAllowed}
-                  value={team.players.filter((p) => p.country === c).length}
+                  value={team.players.filter((p) => p.country === c.name).length}
                 ></Slots>
               </Col>
             </Row>
@@ -34,7 +34,7 @@ const Team = ({ team }) => {
               <Col span={12}>
                 <Slots
                   max={type.maxAllowed}
-                  value={team.players.filter((p) => p.type === type).length}
+                  value={team.players.filter((p) => p.type === type.type).length}
                 ></Slots>
               </Col>
             </Row>
