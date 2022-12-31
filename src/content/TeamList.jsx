@@ -23,6 +23,7 @@ const TeamList = () => {
         value: team.name,
       }))}
       onChange={onTeamSelect}
+      defaultValue=''
     ></Segmented>
   );
 };
