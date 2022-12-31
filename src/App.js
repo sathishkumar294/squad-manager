@@ -1,6 +1,6 @@
 import { ConfigProvider, Layout } from 'antd';
 import './App.css';
-import PlayerList from './content/PlayerList';
+import SelectionContainer from './content/SelectionContainer';
 import Header from './header/Header';
 const { Footer, Content } = Layout;
 
@@ -13,7 +13,9 @@ const App = () => (
         <Layout>
             <Layout>
                 <Header></Header>
-                <Content><PlayerList></PlayerList></Content>
+                <Content>
+                    <SelectionContainer></SelectionContainer>
+                </Content>
                 <Footer>Footer</Footer>
             </Layout>
         </Layout>
