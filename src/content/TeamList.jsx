@@ -1,4 +1,4 @@
-import { Segmented } from "antd";
+import { Col, Row } from "antd";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPlayerAsync, selectTeams } from "../app/store/teams";
@@ -16,15 +16,16 @@ const TeamList = () => {
     );
   };
   return (
-    <Segmented
-      block
-      options={teams.map((team, i) => ({
-        label: <TeamCard team={team} key={i}></TeamCard>,
-        value: team.name,
-      }))}
-      onChange={onTeamSelect}
-      defaultValue=''
-    ></Segmented>
+    <Row justify="space-between">
+      {teams.map((team, i) => (
+        <Col span={3} key={i}>
+          <TeamCard
+            team={team}
+            onClick={() => onTeamSelect(team.name)}
+          ></TeamCard>
+        </Col>
+      ))}
+    </Row>
   );
 };
 
