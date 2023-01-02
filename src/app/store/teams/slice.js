@@ -19,5 +19,11 @@ export const teamSlice = createSlice({
       if (idx > -1) iTeam.players.splice(idx, 1);
       return teams;
     },
+    removeAllPlayers: (state, {payload: {team}})=>{
+      const teams  = state;
+      const iTeam = teams.find((t) => t.name === team);
+      iTeam.players=[];
+      return teams;
+    }
   },
 });

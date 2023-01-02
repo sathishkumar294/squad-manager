@@ -8,6 +8,7 @@ const TeamCard = ({ team, onClick }) => (
     cover={<TeamCover team={team}></TeamCover>}
     onClick={onClick || (() => {})}
     style={!!onClick ? { cursor: "pointer" } : {}}
+    
   ></Card>
 );
 

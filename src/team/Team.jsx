@@ -1,17 +1,26 @@
-import { Card, Col, Row } from "antd";
+import { Button, Card, Col, Row } from "antd";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { removeAllPlayersAsync } from "../app/store/teams";
 import countries from "../constants/countries";
 import playerTypes from "../constants/playerTypes";
 import Slots from "../shared/Slots";
 import TeamCover from "./TeamCover";
 
 const Team = ({ team }) => {
+  const dispatch = useDispatch();
+
   return (
     <Card
       title={team.name}
       cover={<TeamCover team={team} width="128px"></TeamCover>}
       bordered={false}
       style={{ width: 300, margin: "8px 32px" }}
+      actions={[
+        <Button onClick={() => dispatch(removeAllPlayersAsync(team.name))}>
+          Delete all
+        </Button>,
+      ]}
     >
       <Row justify="space-between">
         <Col span={10}>
@@ -22,8 +31,10 @@ const Team = ({ team }) => {
                 <Slots
                   max={c.maxAllowed}
                   min={c.minRequired}
-                  value={team.players.filter((p) => p.country === c.name).length}
-                  ></Slots>
+                  value={
+                    team.players.filter((p) => p.country === c.name).length
+                  }
+                ></Slots>
               </Col>
             </Row>
           ))}
@@ -36,7 +47,9 @@ const Team = ({ team }) => {
                 <Slots
                   max={type.maxAllowed}
                   min={type.minRequired}
-                  value={team.players.filter((p) => p.type === type.type).length}
+                  value={
+                    team.players.filter((p) => p.type === type.type).length
+                  }
                 ></Slots>
               </Col>
             </Row>
