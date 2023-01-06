@@ -1,13 +1,13 @@
 import { Button, Card, Col, Row } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeAllPlayersAsync } from "../app/store/teams";
+import { removeAllPlayers } from "../app/store/teams";
 import countries from "../constants/countries";
 import playerTypes from "../constants/playerTypes";
 import Slots from "../shared/Slots";
 import TeamCover from "./TeamCover";
 
-const Team = ({ team }) => {
+const Team: React.FC<{ team: Team }> = ({ team }) => {
   const dispatch = useDispatch();
 
   return (
@@ -17,7 +17,7 @@ const Team = ({ team }) => {
       bordered={false}
       style={{ width: 300, margin: "8px 32px" }}
       actions={[
-        <Button onClick={() => dispatch(removeAllPlayersAsync(team.name))}>
+        <Button onClick={() => dispatch(removeAllPlayers({ team: team.name }))}>
           Delete all
         </Button>,
       ]}

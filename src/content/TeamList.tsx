@@ -1,18 +1,18 @@
 import { Col, Row } from "antd";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addPlayerAsync, selectTeams } from "../app/store/teams";
+import { addPlayer, selectTeams } from "../app/store/teams";
 import TeamCard from "../team/TeamCard";
 
 const TeamList = () => {
   const teams = useSelector(selectTeams);
   const dispatch = useDispatch();
-  const onTeamSelect = (team) => {
+  const onTeamSelect = (team: string) => {
     dispatch(
-      addPlayerAsync(
-        { name: "Virat Kohli", type: "Batsman", country: "IND" },
-        team
-      )
+      addPlayer({
+        player: { name: "Virat Kohli", type: "Batsman", country: "IND" },
+        team,
+      })
     );
   };
   return (

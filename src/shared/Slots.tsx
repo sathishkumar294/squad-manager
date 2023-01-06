@@ -1,10 +1,14 @@
-import { Col, Progress, Row } from "antd";
+import { Col, Progress, ProgressProps, Row } from "antd";
 import React from "react";
 import { blue, red, green } from "@ant-design/colors";
 
-const Slots = ({ max, value, min }) => {
+const Slots: React.FC<{ min: number; max: number; value: number }> = ({
+  max,
+  value,
+  min,
+}) => {
   const percent = Math.ceil((value * 100) / max);
-  let status = "";
+  let status: ProgressProps["status"] = "normal";
   let color = blue;
   if (value < min) status = "exception";
   if (value > min && value < max) status = "active";

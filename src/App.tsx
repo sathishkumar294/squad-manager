@@ -24,7 +24,7 @@ const App = () => (
             <SelectionContainer></SelectionContainer>
             <TeamStats></TeamStats>
           </Content>
-          <Footer>Footer</Footer>
+          <Footer></Footer>
         </Layout>
       </Layout>
     </ConfigProvider>

@@ -1,6 +1,10 @@
 import React from "react";
 
-const TeamCover = ({ team, height, width }) => {
+const TeamCover: React.FC<{
+  team: Team;
+  height?: string;
+  width?: string;
+}> = ({ team, height, width }) => {
   const h = height || "64px";
   const w = width || "64px";
   return (
