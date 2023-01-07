@@ -17,7 +17,9 @@ export namespace ESPNService {
         countries.find((c) => c.espnId === espnPlayer.countryTeamId)?.name ||
         "ABC",
       name: espnPlayer.longName,
-      potrait: espnPlayer.imageUrl,
+      portraitUrl:
+        "https://img1.hscicdn.com/image/upload/f_auto,t_h_100_2x/lsci" +
+        espnPlayer.imageUrl,
       type: getPlayerTypeForEspnPlayerType(espnPlayer.playingRole),
     };
   };

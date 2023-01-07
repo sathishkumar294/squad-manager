@@ -21,12 +21,13 @@ const TeamList = () => {
   return (
     <Space
       wrap={true}
-      size="large"
+      size="small"
       align="center"
-      style={{ justifyContent: "space-between", margin: "32px" }}
+      style={{ justifyContent: "space-between" }}
     >
       {teams.map((team, i) => (
         <TeamCard
+          key={team.name}
           team={team}
           onClick={() => onTeamSelect(team.name)}
         ></TeamCard>

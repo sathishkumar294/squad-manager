@@ -37,3 +37,8 @@
     transform: rotate(360deg);
   }
 }
+
+/* Fix the issue with list item title */
+h4.ant-list-item-meta-title {
+  margin-block-start: 0;
+}

@@ -2,7 +2,7 @@ interface Player {
   name: string;
   country: string;
   type: PlayerType;
-  potrait?: string;
+  portraitUrl?: string;
 }
 
 type PlayerType = "Batsman" | "Bowler" | "Wicket-keeper" | "All-rounder";

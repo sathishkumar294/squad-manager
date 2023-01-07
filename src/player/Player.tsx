@@ -1,4 +1,4 @@
-import { Col, List } from "antd";
+import { Avatar, List } from "antd";
 import React from "react";
 import { useAppDispatch, useAppSelect } from "../app/store/hooks";
 import { getSelectedPlayer, selectPlayer } from "../app/store/player";
@@ -10,18 +10,18 @@ const Player: React.FC<{ player: Player }> = ({ player }) => {
 
   return (
     <List.Item
+      key={player.name}
       onClick={() => clickPlayer()}
       style={{
         cursor: "pointer",
         border: selectedPlayer?.name === player.name ? "2px solid red" : "",
       }}
     >
-      <Col span={16}>
-        <span style={{ fontWeight: "bold" }}>{player.name}</span>
-        <br />
-        <span>{player.country}</span>
-      </Col>
-      <Col span={8}>{player.type}</Col>
+      <List.Item.Meta
+        avatar={<Avatar src={player.portraitUrl}></Avatar>}
+        title={player.name}
+        description={player.type}
+      ></List.Item.Meta>
     </List.Item>
   );
 };
