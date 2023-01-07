@@ -4,18 +4,24 @@ import { useAppDispatch, useAppSelect } from "../app/store/hooks";
 import {
   fetchPlayersForSelectedCountry,
   getPlayers,
+  getSelectedPlayer,
   isPlayersLoading,
   selectCountry,
+  selectPlayer,
 } from "../app/store/player";
 import countries from "../constants/countries";
 import PlayerList from "./PlayerList";
 
-export const PlayerListContainer = () => {
+export const PlayerListContainer: React.FC<{
+  hidePlayerSelection?: boolean;
+}> = ({ hidePlayerSelection }) => {
   const dispatch = useAppDispatch();
   const clickCountry = (cName: string) =>
     dispatch(selectCountry(countries.find((c) => c.name === cName)!));
   const players = useAppSelect(getPlayers);
   const loading = useAppSelect(isPlayersLoading);
+  const selectedPlayer = useAppSelect(getSelectedPlayer);
+  const onPlayerClick = (player: Player) => dispatch(selectPlayer({ player }));
   useEffect(() => {
     if (players.length === 0) dispatch(fetchPlayersForSelectedCountry());
   }, [players, dispatch]);
@@ -33,7 +39,15 @@ export const PlayerListContainer = () => {
       </Row>
       <Row>
         <Col span={24}>
-          <PlayerList {...{ players, loading }}></PlayerList>
+          <PlayerList
+            {...{
+              players,
+              loading,
+              selectedPlayer,
+              onPlayerClick,
+              hidePlayerSelection,
+            }}
+          ></PlayerList>
         </Col>
       </Row>
     </>

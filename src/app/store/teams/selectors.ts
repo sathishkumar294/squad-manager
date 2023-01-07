@@ -1,3 +1,6 @@
 import { RootState } from "..";
 
-export const selectTeams = (state: RootState) => state.teams;
+const getTeamState = (state: RootState) => state.teams;
+export const allTeams = (state: RootState) => getTeamState(state).teams;
+export const getSelectedTeam = (state: RootState) =>
+  allTeams(state).find((t) => t.name === getTeamState(state).selectedTeam);

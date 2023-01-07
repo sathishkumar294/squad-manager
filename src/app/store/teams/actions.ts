@@ -6,4 +6,5 @@ export const {
   removeAllPlayers,
   removeAllPlayersOfType,
   removeAllPlayersOfCountry,
+  selectTeam,
 } = teamSlice.actions;
