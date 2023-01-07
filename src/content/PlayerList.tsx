@@ -1,5 +1,5 @@
 import { Col, List, Row } from "antd";
-import Player from "../player/Player";
+import PlayerListItem from "../player/PlayerListItem";
 import Spinner from "../shared/Spinner";
 
 const PlayerList: React.FC<{
@@ -26,12 +26,12 @@ const PlayerList: React.FC<{
       bordered
       dataSource={players}
       renderItem={(player) => (
-        <Player
+        <PlayerListItem
           player={player}
           isSelected={selectedPlayer?.name === player.name}
           onPlayerClick={() => onPlayerClick(player)}
           hideSelection={hidePlayerSelection}
-        ></Player>
+        ></PlayerListItem>
       )}
       style={{ maxHeight: "720px", overflow: "scroll" }}
     ></List>
