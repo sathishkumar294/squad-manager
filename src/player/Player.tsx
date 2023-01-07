@@ -14,7 +14,9 @@ const Player: React.FC<{ player: Player }> = ({ player }) => {
       onClick={() => clickPlayer()}
       style={{
         cursor: "pointer",
-        border: selectedPlayer?.name === player.name ? "2px solid red" : "",
+        ...(player.name === selectedPlayer?.name
+          ? { backgroundColor: "#D2B4DE" }
+          : {}),
       }}
     >
       <List.Item.Meta
