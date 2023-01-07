@@ -1,6 +1,6 @@
-import { Col, Progress, ProgressProps, Row, Space } from "antd";
+import { blue, green, red } from "@ant-design/colors";
+import { Progress, ProgressProps, Space } from "antd";
 import React from "react";
-import { blue, red, green } from "@ant-design/colors";
 
 const Slots: React.FC<{ min: number; max: number; value: number }> = ({
   max,

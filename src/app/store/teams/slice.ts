@@ -12,6 +12,10 @@ export const teamSlice = createSlice({
       }: PayloadAction<{ player: Player; team: string }>
     ) => {
       console.log({ event: "addPlayer", player, team });
+      teams.forEach((t) => {
+        const idx = t.players.findIndex((p) => p.name === player.name);
+        if (idx > -1) t.players.splice(idx, 1);
+      });
       const iTeam = teams.find((t) => t.name === team);
       iTeam?.players.push(player);
       return teams;
