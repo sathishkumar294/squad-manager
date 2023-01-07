@@ -10,7 +10,6 @@ export const SelectedTeamSquadContainer = () => {
     selectedTeam && dispatch(removeAllPlayers({ team: selectedTeam?.name }));
   const selectedPlayer = useAppSelect(getSelectedPlayer);
   const onPlayerClick = (player: Player) => dispatch(selectPlayer({ player }));
-  console.log({ selectedTeam });
 
   return (
     <TeamSquadContainer

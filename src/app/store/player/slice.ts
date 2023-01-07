@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface PlayersState {
   players: Player[];
-  selectedPlayer?: Player;
+  selectedPlayer?: string;
   selectedCountry?: Country;
   loadingPlayers?: boolean;
 }
@@ -32,7 +32,7 @@ export const playerSlice = createSlice({
     ) => {
       // Toggle selection if same player, else select another player
       state.selectedPlayer =
-        state.selectedPlayer?.name === player.name ? undefined : player;
+        state.selectedPlayer === player.name ? undefined : player.name;
     },
     pSelectCountry: (
       state,
