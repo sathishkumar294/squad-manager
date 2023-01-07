@@ -23,7 +23,7 @@ const Team: React.FC<{ team: Team }> = ({ team }) => {
       ]}
     >
       <Row justify="space-between">
-        <Col span={8}>
+        <Col span={7}>
           {countries.map((c, i) => (
             <Row key={i} justify="space-between">
               <Col span={6}>{c.name}</Col>
@@ -39,7 +39,7 @@ const Team: React.FC<{ team: Team }> = ({ team }) => {
             </Row>
           ))}
         </Col>
-        <Col span={15}>
+        <Col span={14}>
           {playerTypes.map((type, i) => (
             <Row key={i} justify="space-between">
               <Col span={8}>{type.type}</Col>

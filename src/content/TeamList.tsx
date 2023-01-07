@@ -19,7 +19,12 @@ const TeamList = () => {
       : console.warn("Player not selected");
   };
   return (
-    <Space wrap={true} size="large" align="center">
+    <Space
+      wrap={true}
+      size="large"
+      align="center"
+      style={{ justifyContent: "space-between", margin: "32px" }}
+    >
       {teams.map((team, i) => (
         <TeamCard
           team={team}
