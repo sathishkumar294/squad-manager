@@ -29,9 +29,12 @@ export const playerSlice = createSlice({
       state,
       { payload: { player } }: PayloadAction<{ player: Player }>
     ) => {
+      // Toggle selection if same player, else select another player
+      const sPlayer =
+        state.selectedPlayer?.name === player.name ? undefined : player;
       return {
         ...state,
-        selectedPlayer: !!state.selectedPlayer ? undefined : player,
+        selectedPlayer: sPlayer,
       };
     },
   },
