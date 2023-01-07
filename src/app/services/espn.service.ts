@@ -1,9 +1,42 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import countries from "../../constants/countries";
 
-export const espnService = {
-  getPlayers: (teamId) => {
-    return axios.get(
+export namespace espnService {
+  export const getPlayers = async (teamId: number) => {
+    const r = await axios.get<
+      string,
+      AxiosResponse<ESPNPlayerSearchResponse, string>
+    >(
       `https://hs-consumer-api.espncricinfo.com/v1/pages/player/search?mode=BOTH&page=1&records=40&filterActive=true&filterTeamId=${teamId}&filterClassId=3&filterFormatLevel=ALL&sort=ALPHA_ASC`
     );
-  },
-};
+    return r.data.results.map(getPlayerForEspnPlayer);
+  };
+  const getPlayerForEspnPlayer = (espnPlayer: ESPNPlayer): Player => {
+    return {
+      country:
+        countries.find((c) => c.espnId === espnPlayer.countryTeamId)?.name ||
+        "ABC",
+      name: espnPlayer.longName,
+      potrait: espnPlayer.imageUrl,
+      type: getPlayerTypeForEspnPlayerType(espnPlayer.playingRole),
+    };
+  };
+  const getPlayerTypeForEspnPlayerType = (
+    espnType: ESPNPlayingRole
+  ): PlayerType => {
+    switch (espnType) {
+      case "allrounder":
+        return "All-rounder";
+      case "batter":
+      case "opening batter":
+      case "top-order batter":
+        return "Batsman";
+      case "bowler":
+        return "Bowler";
+      case "bowling allrounder":
+        return "All-rounder";
+      case "wicketkeeper batter":
+        return "Wicket-keeper";
+    }
+  };
+}

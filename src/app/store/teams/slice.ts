@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TEAMS } from "../../../constants/teams";
 
 export const teamSlice = createSlice({
@@ -7,7 +7,9 @@ export const teamSlice = createSlice({
   reducers: {
     addPlayer: (
       teams,
-      { payload: { player, team } }: Payload<{ player: Player; team: string }>
+      {
+        payload: { player, team },
+      }: PayloadAction<{ player: Player; team: string }>
     ) => {
       console.log({ event: "addPlayer", player, team });
       const iTeam = teams.find((t) => t.name === team);
@@ -16,7 +18,9 @@ export const teamSlice = createSlice({
     },
     removePlayer: (
       teams,
-      { payload: { player, team } }: Payload<{ player: string; team: string }>
+      {
+        payload: { player, team },
+      }: PayloadAction<{ player: string; team: string }>
     ) => {
       const iTeam = teams.find((t) => t.name === team);
       const idx = iTeam?.players.findIndex((p) => p.name === player) || -1;
@@ -25,7 +29,7 @@ export const teamSlice = createSlice({
     },
     removeAllPlayers: (
       teams,
-      { payload: { team } }: Payload<{ team: string }>
+      { payload: { team } }: PayloadAction<{ team: string }>
     ) => {
       const iTeam = teams.find((t) => t.name === team);
       iTeam?.players.splice(0, iTeam.players.length);
@@ -33,7 +37,7 @@ export const teamSlice = createSlice({
     },
     removeAllPlayersOfType: (
       teams,
-      { payload: { team, type } }: Payload<{ team: string; type: string }>
+      { payload: { team, type } }: PayloadAction<{ team: string; type: string }>
     ) => {
       const iTeam = teams.find((t) => t.name === team);
       iTeam?.players.splice(
@@ -45,7 +49,9 @@ export const teamSlice = createSlice({
     },
     removeAllPlayersOfCountry: (
       teams,
-      { payload: { team, country } }: Payload<{ team: string; country: string }>
+      {
+        payload: { team, country },
+      }: PayloadAction<{ team: string; country: string }>
     ) => {
       const iTeam = teams.find((t) => t.name === team);
       iTeam?.players.splice(

@@ -1,5 +1,8 @@
 interface Player {
   name: string;
   country: string;
-  type: "Batsman" | "Bowler" | "Wicket-keeper" | "All-rounder";
+  type: PlayerType;
+  potrait: string;
 }
+
+type PlayerType = "Batsman" | "Bowler" | "Wicket-keeper" | "All-rounder";

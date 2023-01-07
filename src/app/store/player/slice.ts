@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export const playerSlice = createSlice({
   name: "players",
@@ -8,7 +8,7 @@ export const playerSlice = createSlice({
       allPlayers,
       {
         payload: { country, players },
-      }: Payload<{ country: string; players: Player[] }>
+      }: PayloadAction<{ country: string; players: Player[] }>
     ) => {
       return [...allPlayers.filter((p) => p.country !== country), ...players];
     },
