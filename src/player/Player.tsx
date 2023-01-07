@@ -1,3 +1,4 @@
+import { CheckCircleOutlined } from "@ant-design/icons";
 import { Avatar, List } from "antd";
 import React from "react";
 import { useAppDispatch, useAppSelect } from "../app/store/hooks";
@@ -7,6 +8,16 @@ const Player: React.FC<{ player: Player }> = ({ player }) => {
   const dispatch = useAppDispatch();
   const clickPlayer = () => dispatch(selectPlayer({ player }));
   const selectedPlayer = useAppSelect(getSelectedPlayer);
+
+  const avatar =
+    player.name === selectedPlayer?.name ? (
+      <Avatar
+        style={{ backgroundColor: "#52BE80" }}
+        icon={<CheckCircleOutlined />}
+      ></Avatar>
+    ) : (
+      <Avatar src={player.portraitUrl}></Avatar>
+    );
 
   return (
     <List.Item
@@ -20,7 +31,7 @@ const Player: React.FC<{ player: Player }> = ({ player }) => {
       }}
     >
       <List.Item.Meta
-        avatar={<Avatar src={player.portraitUrl}></Avatar>}
+        avatar={avatar}
         title={player.name}
         description={player.type}
       ></List.Item.Meta>
