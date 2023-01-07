@@ -22,7 +22,10 @@ const TeamCard: React.FC<{ team: Team; onClick?: () => void }> = ({
       cover={<TeamCover team={team}></TeamCover>}
       onClick={onClick || (() => {})}
       hoverable={true}
-      style={{ minWidth: "200px", ...(!!onClick ? { cursor: "pointer" } : {}) }}
+      style={{
+        minWidth: "200px",
+        ...(!!onClick ? { cursor: "pointer" } : {}),
+      }}
     >
       <Space direction="vertical">
         <Progress
