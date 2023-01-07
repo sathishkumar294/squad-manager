@@ -15,7 +15,7 @@ const Team: React.FC<{ team: Team }> = ({ team }) => {
       title={team.name}
       cover={<TeamCover team={team} width="128px"></TeamCover>}
       bordered={false}
-      style={{ minWidth: 200 }}
+      style={{ minWidth: 400 }}
       actions={[
         <Button onClick={() => dispatch(removeAllPlayers({ team: team.name }))}>
           Delete all
@@ -23,7 +23,7 @@ const Team: React.FC<{ team: Team }> = ({ team }) => {
       ]}
     >
       <Row justify="space-between">
-        <Col span={7}>
+        <Col span={11}>
           {countries.map((c, i) => (
             <Row key={i} justify="space-between">
               <Col span={6}>{c.name}</Col>
@@ -39,7 +39,7 @@ const Team: React.FC<{ team: Team }> = ({ team }) => {
             </Row>
           ))}
         </Col>
-        <Col span={14}>
+        <Col span={11}>
           {playerTypes.map((type, i) => (
             <Row key={i} justify="space-between">
               <Col span={8}>{type.type}</Col>
@@ -50,6 +50,7 @@ const Team: React.FC<{ team: Team }> = ({ team }) => {
                   value={
                     team.players.filter((p) => p.type === type.type).length
                   }
+                  size="small"
                 ></Slots>
               </Col>
             </Row>
