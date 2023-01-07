@@ -1,5 +1,4 @@
-import { Row } from "antd";
-import React from "react";
+import { Space } from "antd";
 import { useSelector } from "react-redux";
 import { selectTeams } from "../app/store/teams";
 import Team from "../team/Team";
@@ -9,11 +8,16 @@ const TeamStats = () => {
   console.log({ teams });
   return (
     <>
-      <Row justify="space-evenly">
+      <Space
+        wrap={true}
+        size="middle"
+        align="center"
+        style={{ justifyContent: "space-evenly" }}
+      >
         {teams.map((team, i) => (
           <Team team={team} key={team.name}></Team>
         ))}
-      </Row>
+      </Space>
     </>
   );
 };

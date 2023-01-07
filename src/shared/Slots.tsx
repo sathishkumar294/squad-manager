@@ -1,4 +1,4 @@
-import { Col, Progress, ProgressProps, Row } from "antd";
+import { Col, Progress, ProgressProps, Row, Space } from "antd";
 import React from "react";
 import { blue, red, green } from "@ant-design/colors";
 
@@ -19,21 +19,17 @@ const Slots: React.FC<{ min: number; max: number; value: number }> = ({
   }
   const colorArray = Array(value).fill(color[4]);
   return (
-    <Row wrap={false}>
-      <Col>
-        <Progress
-          {...{ status, percent }}
-          steps={max}
-          showInfo={false}
-          strokeColor={colorArray}
-        ></Progress>
-      </Col>
-      <Col>
-        <span>
-          {value}/{max}
-        </span>
-      </Col>
-    </Row>
+    <Space wrap={false} size="small" align="end" style={{ width: "100%" }}>
+      <Progress
+        {...{ status, percent }}
+        steps={max}
+        showInfo={false}
+        strokeColor={colorArray}
+      ></Progress>
+      <span>
+        {value}/{max}
+      </span>
+    </Space>
   );
 };
 

@@ -10,7 +10,7 @@ const TeamCard: React.FC<{ team: Team; onClick?: () => void }> = ({
     title={team.name}
     cover={<TeamCover team={team}></TeamCover>}
     onClick={onClick || (() => {})}
-    style={!!onClick ? { cursor: "pointer" } : {}}
+    style={{ minWidth: "200px", ...(!!onClick ? { cursor: "pointer" } : {}) }}
   ></Card>
 );
 
