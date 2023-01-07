@@ -1,1 +1,3 @@
-export const selectTeams = (state: { teams: Team[] }) => state.teams;
+import { RootState } from "..";
+
+export const selectTeams = (state: RootState) => state.teams;

@@ -55,4 +55,6 @@ type ESPNPlayingRole =
   | "allrounder"
   | "wicketkeeper batter"
   | "top-order batter"
-  | "opening batter";
+  | "opening batter"
+  | "middle-order batter"
+  | "batting allrounder";

@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface PlayersState {
   players: Player[];
   selectedPlayer?: Player;
+  selectedCountry?: Country;
 }
 
 export const playerSlice = createSlice({
@@ -19,10 +20,7 @@ export const playerSlice = createSlice({
     ) => {
       return {
         ...state,
-        players: [
-          ...state.players.filter((p) => p.country !== country),
-          ...players,
-        ],
+        players,
       };
     },
     selectPlayer: (
@@ -30,12 +28,14 @@ export const playerSlice = createSlice({
       { payload: { player } }: PayloadAction<{ player: Player }>
     ) => {
       // Toggle selection if same player, else select another player
-      const sPlayer =
+      state.selectedPlayer =
         state.selectedPlayer?.name === player.name ? undefined : player;
-      return {
-        ...state,
-        selectedPlayer: sPlayer,
-      };
+    },
+    pSelectCountry: (
+      state,
+      { payload: { country } }: PayloadAction<{ country: Country }>
+    ) => {
+      state.selectedCountry = country;
     },
   },
 });

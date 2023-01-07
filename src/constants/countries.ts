@@ -9,5 +9,5 @@ const countries: Country[] = [
   { name: "RSA", maxAllowed: 3, minRequired: 1, espnId: 3 },
   { name: "SL", maxAllowed: 3, minRequired: 0, espnId: 8 },
   { name: "WI", maxAllowed: 3, minRequired: 0, espnId: 4 },
-];
+].sort((c1, c2) => c1.name.localeCompare(c2.name));
 export default countries;

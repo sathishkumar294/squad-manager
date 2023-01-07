@@ -30,10 +30,12 @@ export namespace espnService {
       case "batter":
       case "opening batter":
       case "top-order batter":
+      case "middle-order batter":
         return "Batsman";
       case "bowler":
         return "Bowler";
       case "bowling allrounder":
+      case "batting allrounder":
         return "All-rounder";
       case "wicketkeeper batter":
         return "Wicket-keeper";
