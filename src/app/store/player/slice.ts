@@ -4,12 +4,14 @@ interface PlayersState {
   players: Player[];
   selectedPlayer?: Player;
   selectedCountry?: Country;
+  loadingPlayers?: boolean;
 }
 
 export const playerSlice = createSlice({
   name: "players",
   initialState: {
     players: [],
+    loadingPlayers: false,
   } as PlayersState,
   reducers: {
     loadPlayersForTeam: (
@@ -21,6 +23,7 @@ export const playerSlice = createSlice({
       return {
         ...state,
         players,
+        loadingPlayers: false,
       };
     },
     selectPlayer: (
@@ -36,6 +39,9 @@ export const playerSlice = createSlice({
       { payload: { country } }: PayloadAction<{ country: Country }>
     ) => {
       state.selectedCountry = country;
+    },
+    setPlayersLoading: (state) => {
+      state.loadingPlayers = true;
     },
   },
 });

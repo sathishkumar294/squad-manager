@@ -1,20 +1,29 @@
-import { List } from "antd";
+import { Col, List, Row, Spin } from "antd";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelect } from "../app/store/hooks";
 import {
   fetchPlayersForSelectedCountry,
   getPlayers,
+  isPlayersLoading,
 } from "../app/store/player";
 import countries from "../constants/countries";
 import Player from "../player/Player";
+import Spinner from "../shared/Spinner";
 
 const PlayerList = () => {
   const players = useAppSelect(getPlayers);
+  const loading = useAppSelect(isPlayersLoading);
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (players.length === 0) dispatch(fetchPlayersForSelectedCountry());
   }, [players, dispatch]);
-  return (
+  return loading ? (
+    <Row justify="center" style={{ padding: "64px" }}>
+      <Col span={4}>
+        <Spinner></Spinner>
+      </Col>
+    </Row>
+  ) : (
     <List
       bordered
       dataSource={players}

@@ -1,8 +1,13 @@
 import { RootState } from "..";
 
-export const getPlayers = (state: RootState) => state.players.players;
+const getPlayerState = (state: RootState) => state.players;
+
+export const getPlayers = (state: RootState) => getPlayerState(state).players;
 export const getSelectedPlayer = (state: RootState) =>
-  state.players.selectedPlayer;
+  getPlayerState(state).selectedPlayer;
 
 export const getSelectedCountry = (state: RootState) =>
-  state.players.selectedCountry;
+  getPlayerState(state).selectedCountry;
+
+export const isPlayersLoading = (state: RootState) =>
+  getPlayerState(state).loadingPlayers;
