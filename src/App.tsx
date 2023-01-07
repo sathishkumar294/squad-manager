@@ -18,14 +18,12 @@ const App = () => (
       }}
     >
       <Layout>
-        <Layout>
-          <Header></Header>
-          <Content>
-            <SelectionContainer></SelectionContainer>
-            <TeamStats></TeamStats>
-          </Content>
-          <Footer></Footer>
-        </Layout>
+        <Header></Header>
+        <Content className="site-layout" style={{ padding: "32px 50px" }}>
+          <SelectionContainer></SelectionContainer>
+          <TeamStats></TeamStats>
+        </Content>
+        <Footer></Footer>
       </Layout>
     </ConfigProvider>
   </Provider>

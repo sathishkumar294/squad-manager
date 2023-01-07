@@ -1,4 +1,4 @@
-import { Col, List, Row, Spin } from "antd";
+import { Col, List, Row } from "antd";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelect } from "../app/store/hooks";
 import {
@@ -6,7 +6,6 @@ import {
   getPlayers,
   isPlayersLoading,
 } from "../app/store/player";
-import countries from "../constants/countries";
 import Player from "../player/Player";
 import Spinner from "../shared/Spinner";
 

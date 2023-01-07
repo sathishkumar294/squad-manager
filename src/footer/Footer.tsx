@@ -1,11 +1,8 @@
-import { Layout, Row } from "antd";
-import React from "react";
+import { Layout } from "antd";
 
 const Footer = () => (
-  <Layout.Footer>
-    <Row justify="end">
-      <span>Made by Sathishkumar. Copyrights Ⓒ reserved</span>
-    </Row>
+  <Layout.Footer style={{ textAlign: "center" }}>
+    <span>Made by Sathishkumar. Copyrights Ⓒ reserved</span>
   </Layout.Footer>
 );
 
