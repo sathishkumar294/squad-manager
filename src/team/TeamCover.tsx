@@ -1,4 +1,4 @@
-import { Col, Row, Space } from "antd";
+import { Space } from "antd";
 import React from "react";
 
 const TeamCover: React.FC<{
