@@ -2,7 +2,7 @@ import { CheckCircleOutlined } from "@ant-design/icons";
 import { Avatar, List } from "antd";
 import React from "react";
 
-const Player: React.FC<{
+const PlayerListItem: React.FC<{
   player: Player;
   isSelected: boolean;
   onPlayerClick: () => void;
@@ -37,4 +37,4 @@ const Player: React.FC<{
   );
 };
 
-export default Player;
+export default PlayerListItem;
