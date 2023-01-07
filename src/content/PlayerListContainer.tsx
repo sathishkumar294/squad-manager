@@ -1,6 +1,12 @@
 import { Col, Row, Select } from "antd";
-import { useAppDispatch } from "../app/store/hooks";
-import { selectCountry } from "../app/store/player";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelect } from "../app/store/hooks";
+import {
+  fetchPlayersForSelectedCountry,
+  getPlayers,
+  isPlayersLoading,
+  selectCountry,
+} from "../app/store/player";
 import countries from "../constants/countries";
 import PlayerList from "./PlayerList";
 
@@ -8,7 +14,11 @@ export const PlayerListContainer = () => {
   const dispatch = useAppDispatch();
   const clickCountry = (cName: string) =>
     dispatch(selectCountry(countries.find((c) => c.name === cName)!));
-
+  const players = useAppSelect(getPlayers);
+  const loading = useAppSelect(isPlayersLoading);
+  useEffect(() => {
+    if (players.length === 0) dispatch(fetchPlayersForSelectedCountry());
+  }, [players, dispatch]);
   return (
     <>
       <Row justify="space-evenly">
@@ -23,7 +33,7 @@ export const PlayerListContainer = () => {
       </Row>
       <Row>
         <Col span={24}>
-          <PlayerList></PlayerList>
+          <PlayerList {...{ players, loading }}></PlayerList>
         </Col>
       </Row>
     </>

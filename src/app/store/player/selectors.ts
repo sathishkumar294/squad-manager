@@ -10,4 +10,4 @@ export const getSelectedCountry = (state: RootState) =>
   getPlayerState(state).selectedCountry;
 
 export const isPlayersLoading = (state: RootState) =>
-  getPlayerState(state).loadingPlayers;
+  getPlayerState(state).loadingPlayers || false;
