@@ -5,7 +5,6 @@ import Team from "../team/Team";
 
 const TeamStats = () => {
   const teams = useSelector(selectTeams);
-  console.log({ teams });
   return (
     <>
       <Space

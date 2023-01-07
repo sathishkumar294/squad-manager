@@ -1,6 +1,6 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { RootState } from "..";
-import { espnService } from "../../services/espn.service";
+import { ESPNService } from "../../services/espn.service";
 import { getSelectedCountry } from "./selectors";
 import { playerSlice } from "./slice";
 
@@ -21,7 +21,7 @@ export const fetchPlayersForSelectedCountry =
   () => async (dispatch: Dispatch<any>, getState: () => RootState) => {
     dispatch(setPlayersLoading());
     const selectedCountry = getSelectedCountry(getState());
-    const players = await espnService.getPlayers(selectedCountry?.espnId || 6);
+    const players = await ESPNService.getPlayers(selectedCountry?.espnId || 6);
     return dispatch(
       loadPlayersForTeam({ country: selectedCountry?.name!, players })
     );

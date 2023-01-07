@@ -1,16 +1,19 @@
+import { Col, Row, Space } from "antd";
 import React from "react";
 
 const TeamCover: React.FC<{
   team: Team;
   height?: string;
   width?: string;
-}> = ({ team, height, width }) => {
-  const h = height || "64px";
-  const w = width || "64px";
+}> = ({ team, height }) => {
+  const h = height || "96px";
   return (
-    <div style={{ padding: "32px" }}>
-      <img alt={team.name} src={team.logo} height={h} width={w} />
-    </div>
+    <Space
+      align="center"
+      style={{ padding: "8px", justifyContent: "center", display: "flex" }}
+    >
+      <img alt={team.name} src={team.logoUrl} height={h} />
+    </Space>
   );
 };
 

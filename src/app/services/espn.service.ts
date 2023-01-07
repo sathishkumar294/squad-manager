@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import countries from "../../constants/countries";
 
-export namespace espnService {
+export namespace ESPNService {
   export const getPlayers = async (teamId: number) => {
     const r = await axios.get<
       string,
