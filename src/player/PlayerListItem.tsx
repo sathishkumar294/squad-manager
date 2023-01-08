@@ -1,8 +1,4 @@
-import {
-  CheckCircleOutlined,
-  CloseCircleTwoTone,
-  CloseOutlined,
-} from "@ant-design/icons";
+import { CheckCircleOutlined, CloseOutlined } from "@ant-design/icons";
 import { Avatar, Button, List, Tooltip } from "antd";
 import React from "react";
 
