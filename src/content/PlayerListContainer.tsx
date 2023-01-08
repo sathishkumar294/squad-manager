@@ -25,6 +25,7 @@ export const PlayerListContainer: React.FC<{
   useEffect(() => {
     if (players.length === 0) dispatch(fetchPlayersForSelectedCountry());
   }, [players, dispatch]);
+
   return (
     <>
       <Row justify="space-evenly">

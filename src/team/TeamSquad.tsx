@@ -8,7 +8,14 @@ const TeamSquad: React.FC<{
   removeAllPlayers: () => void;
   selectedPlayer?: Player;
   onPlayerClick: (player: Player) => void;
-}> = ({ team, removeAllPlayers, selectedPlayer, onPlayerClick }) => {
+  removePlayerFromSquad?: (player: Player) => void;
+}> = ({
+  team,
+  removeAllPlayers,
+  selectedPlayer,
+  onPlayerClick,
+  removePlayerFromSquad,
+}) => {
   return (
     <Card
       title={team.name}
@@ -27,6 +34,7 @@ const TeamSquad: React.FC<{
         selectedPlayer={selectedPlayer}
         onPlayerClick={onPlayerClick}
         hidePlayerSelection={true}
+        removePlayerFromSquad={removePlayerFromSquad}
       ></PlayerList>
     </Card>
   );

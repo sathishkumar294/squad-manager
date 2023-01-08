@@ -8,12 +8,14 @@ const PlayerList: React.FC<{
   selectedPlayer?: Player;
   onPlayerClick: (player: Player) => void;
   hidePlayerSelection?: boolean;
+  removePlayerFromSquad?: (player: Player) => void;
 }> = ({
   players,
   loading,
   selectedPlayer,
   onPlayerClick,
   hidePlayerSelection,
+  removePlayerFromSquad,
 }) => {
   return loading ? (
     <Row justify="center" style={{ padding: "64px" }}>
@@ -31,6 +33,11 @@ const PlayerList: React.FC<{
           isSelected={selectedPlayer?.name === player.name}
           onPlayerClick={() => onPlayerClick(player)}
           hideSelection={hidePlayerSelection}
+          removePlayerFromSquad={
+            removePlayerFromSquad
+              ? () => removePlayerFromSquad(player)
+              : undefined
+          }
         ></PlayerListItem>
       )}
       style={{ maxHeight: "720px", overflow: "scroll" }}

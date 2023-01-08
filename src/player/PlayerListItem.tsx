@@ -1,5 +1,5 @@
-import { CheckCircleOutlined } from "@ant-design/icons";
-import { Avatar, List } from "antd";
+import { CheckCircleOutlined, CloseCircleTwoTone } from "@ant-design/icons";
+import { Avatar, List, Tooltip } from "antd";
 import React from "react";
 
 const PlayerListItem: React.FC<{
@@ -7,7 +7,14 @@ const PlayerListItem: React.FC<{
   isSelected: boolean;
   onPlayerClick: () => void;
   hideSelection?: boolean;
-}> = ({ player, onPlayerClick, isSelected, hideSelection }) => {
+  removePlayerFromSquad?: () => void;
+}> = ({
+  player,
+  onPlayerClick,
+  isSelected,
+  hideSelection,
+  removePlayerFromSquad,
+}) => {
   const isPlayerSelected = hideSelection ? false : isSelected;
 
   const avatar = isPlayerSelected ? (
@@ -27,6 +34,19 @@ const PlayerListItem: React.FC<{
         cursor: "pointer",
         ...(isPlayerSelected ? { backgroundColor: "#D2B4DE" } : {}),
       }}
+      actions={
+        removePlayerFromSquad
+          ? [
+              <Tooltip title="">
+                <CloseCircleTwoTone
+                  twoToneColor="#C0392B"
+                  onClick={removePlayerFromSquad}
+                  className="player-remove-icon"
+                />
+              </Tooltip>,
+            ]
+          : []
+      }
     >
       <List.Item.Meta
         avatar={avatar}
