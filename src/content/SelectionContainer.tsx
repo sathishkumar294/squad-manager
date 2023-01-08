@@ -5,10 +5,10 @@ import TeamList from "./TeamList";
 const SelectionContainer = () => {
   return (
     <Row justify="space-between" align="top">
-      <Col span={6}>
+      <Col xs={24} sm={24} md={12} lg={8} xl={6}>
         <PlayerListContainer></PlayerListContainer>
       </Col>
-      <Col span={17}>
+      <Col xs={24} sm={24} md={12} lg={16} xl={17}>
         <TeamList></TeamList>
       </Col>
     </Row>

@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelect } from "../app/store/hooks";
-import { getSelectedPlayer, selectPlayer } from "../app/store/player";
+import { getSelectedPlayer } from "../app/store/player";
 import {
   getSelectedTeam,
   removeAllPlayers,
@@ -13,7 +13,7 @@ export const SelectedTeamSquadContainer = () => {
   const resetSquad = () =>
     selectedTeam && dispatch(removeAllPlayers({ team: selectedTeam?.name }));
   const selectedPlayer = useAppSelect(getSelectedPlayer);
-  const onPlayerClick = (player: Player) => dispatch(selectPlayer({ player }));
+  const onPlayerClick = () => {};
   const removePlayerFromSquad = (player: Player) =>
     selectedTeam &&
     dispatch(removePlayer({ player: player.name, team: selectedTeam.name }));

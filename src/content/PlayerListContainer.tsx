@@ -26,7 +26,7 @@ export const PlayerListContainer: React.FC<{
 
   return (
     <>
-      <Row justify="space-evenly">
+      <Row justify="space-evenly" align="stretch">
         <Col span={24}>
           <Select
             defaultValue="IND"

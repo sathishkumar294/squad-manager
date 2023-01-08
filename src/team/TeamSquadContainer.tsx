@@ -17,7 +17,6 @@ export const TeamSquadContainer: React.FC<{
     <TeamSquad
       team={team}
       removeAllPlayers={resetSquad}
-      selectedPlayer={selectedPlayer}
       onPlayerClick={onPlayerClick}
       removePlayerFromSquad={removePlayerFromSquad}
     ></TeamSquad>
