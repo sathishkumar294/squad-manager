@@ -6,16 +6,9 @@ import TeamCover from "./TeamCover";
 const TeamSquad: React.FC<{
   team: Team;
   removeAllPlayers: () => void;
-  selectedPlayer?: Player;
   onPlayerClick: (player: Player) => void;
   removePlayerFromSquad?: (player: Player) => void;
-}> = ({
-  team,
-  removeAllPlayers,
-  selectedPlayer,
-  onPlayerClick,
-  removePlayerFromSquad,
-}) => {
+}> = ({ team, removeAllPlayers, onPlayerClick, removePlayerFromSquad }) => {
   return (
     <Card
       title={team.name}
@@ -31,7 +24,6 @@ const TeamSquad: React.FC<{
       <PlayerList
         players={team.players}
         loading={false}
-        selectedPlayer={selectedPlayer}
         onPlayerClick={onPlayerClick}
         hidePlayerSelection={true}
         removePlayerFromSquad={removePlayerFromSquad}

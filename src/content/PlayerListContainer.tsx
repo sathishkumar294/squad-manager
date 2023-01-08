@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelect } from "../app/store/hooks";
 import {
   fetchPlayersForSelectedCountry,
   getPlayers,
-  getSelectedPlayer,
   isPlayersLoading,
   selectCountry,
   selectPlayer,
@@ -20,7 +19,6 @@ export const PlayerListContainer: React.FC<{
     dispatch(selectCountry(countries.find((c) => c.name === cName)!));
   const players = useAppSelect(getPlayers);
   const loading = useAppSelect(isPlayersLoading);
-  const selectedPlayer = useAppSelect(getSelectedPlayer);
   const onPlayerClick = (player: Player) => dispatch(selectPlayer({ player }));
   useEffect(() => {
     if (players.length === 0) dispatch(fetchPlayersForSelectedCountry());
@@ -44,7 +42,6 @@ export const PlayerListContainer: React.FC<{
             {...{
               players,
               loading,
-              selectedPlayer,
               onPlayerClick,
               hidePlayerSelection,
             }}

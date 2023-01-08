@@ -8,12 +8,14 @@ const PlayerListItem: React.FC<{
   onPlayerClick: () => void;
   hideSelection?: boolean;
   removePlayerFromSquad?: () => void;
+  playerTeam?: Team;
 }> = ({
   player,
   onPlayerClick,
   isSelected,
   hideSelection,
   removePlayerFromSquad,
+  playerTeam,
 }) => {
   const isPlayerSelected = hideSelection ? false : isSelected;
 
@@ -34,8 +36,8 @@ const PlayerListItem: React.FC<{
         cursor: "pointer",
         ...(isPlayerSelected ? { backgroundColor: "#D2B4DE" } : {}),
       }}
-      actions={
-        removePlayerFromSquad
+      actions={[
+        ...(removePlayerFromSquad
           ? [
               <Tooltip title="Remove from squad">
                 <Button
@@ -47,8 +49,16 @@ const PlayerListItem: React.FC<{
                 ></Button>
               </Tooltip>,
             ]
-          : []
-      }
+          : []),
+        ...(playerTeam
+          ? [
+              <Avatar
+                key={playerTeam.name}
+                src={playerTeam.smallLogoUrl}
+              ></Avatar>,
+            ]
+          : []),
+      ]}
     >
       <List.Item.Meta
         avatar={avatar}
