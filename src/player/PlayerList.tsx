@@ -1,5 +1,6 @@
 import { FlagOutlined, SortAscendingOutlined } from "@ant-design/icons";
 import { Col, List, Row, Segmented, Space } from "antd";
+import { useCallback, useEffect, useState } from "react";
 import { PlayerListItemContainer } from "../content/PlayerListItemContainer";
 import { BatsmanIcon } from "../shared/BatsmanIcon";
 import Spinner from "../shared/Spinner";
@@ -17,6 +18,22 @@ const PlayerList: React.FC<{
   hidePlayerSelection,
   removePlayerFromSquad,
 }) => {
+  const getSortedPlayers = useCallback(
+    (sort: keyof Player) =>
+      [...players].sort((p1, p2) => p1[sort]?.localeCompare(p2[sort]!) || 0),
+    [players]
+  );
+
+  const [sortedPlayers, setPlayers] = useState(getSortedPlayers("name"));
+  const sortPlayers = (sort: keyof Player) => {
+    setPlayers(getSortedPlayers(sort));
+  };
+
+  useEffect(
+    () => setPlayers(getSortedPlayers("name")),
+    [players, getSortedPlayers]
+  );
+
   return loading ? (
     <Row justify="center" style={{ padding: "64px" }}>
       <Col span={4}>
@@ -31,15 +48,16 @@ const PlayerList: React.FC<{
       style={{ width: "100%" }}
     >
       <Segmented
+        onChange={(e) => sortPlayers(e.toString() as keyof Player)}
         options={[
           {
             label: "Alpha",
-            value: "player",
+            value: "name",
             icon: <SortAscendingOutlined />,
           },
           {
             label: "Role",
-            value: "role",
+            value: "type",
             icon: <BatsmanIcon />,
           },
           {
@@ -51,7 +69,7 @@ const PlayerList: React.FC<{
       />
       <List
         bordered
-        dataSource={players}
+        dataSource={sortedPlayers}
         renderItem={(player) => (
           <PlayerListItemContainer
             player={player}
