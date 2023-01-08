@@ -1,9 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { NoticeType } from "antd/es/message/interface";
+import countries from "../../../constants/countries";
+import playerTypes from "../../../constants/playerTypes";
 import { TEAMS } from "../../../constants/teams";
 
 interface TeamState {
   teams: Team[];
   selectedTeam?: string;
+  message?: AppMessage;
 }
 
 export const teamSlice = createSlice({
@@ -23,6 +27,33 @@ export const teamSlice = createSlice({
       });
       const iTeam = state.teams.find((t) => t.name === team);
       iTeam?.players.push(player);
+
+      // Check the national player limit
+      const countryLimit =
+        countries.find((c) => c.name === player.country)?.maxAllowed || 1000;
+      let isLimitExceed =
+        iTeam?.players.filter((p) => p.country === player.country).length! >
+        countryLimit;
+      if (isLimitExceed) {
+        state.message = {
+          message: `Country limit exceeded for ${player.country}. Max allowed: ${countryLimit}`,
+          type: "warning",
+        };
+      }
+
+      // Check the player type limit
+      const playerTypeLimit =
+        playerTypes.find((t) => t.type === player.type)?.maxAllowed || 1000;
+      isLimitExceed =
+        iTeam?.players.filter((p) => p.type === player.type).length! >
+        playerTypeLimit;
+      if (isLimitExceed) {
+        state.message = {
+          message: `Player type limit exceeded for ${player.type}. Max allowed: ${playerTypeLimit}`,
+          type: "warning",
+        };
+      }
+
       return state;
     },
     removePlayer: (
@@ -75,6 +106,14 @@ export const teamSlice = createSlice({
       { payload: { team } }: PayloadAction<{ team?: Team }>
     ) => {
       state.selectedTeam = team?.name;
+    },
+    showMessage: (
+      state,
+      {
+        payload: { message, type },
+      }: PayloadAction<{ message: string; type?: NoticeType }>
+    ) => {
+      state.message = { message, type } as AppMessage;
     },
   },
 });

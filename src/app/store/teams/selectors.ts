@@ -7,3 +7,5 @@ export const getSelectedTeam = (state: RootState) =>
 
 export const getTeamForPlayer = (player: Player) => (state: RootState) =>
   allTeams(state).find((t) => t.players.some((p) => p.name === player.name));
+
+export const getMessage = (state: RootState) => getTeamState(state).message;

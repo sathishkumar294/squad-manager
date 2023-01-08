@@ -6,6 +6,7 @@ import SelectionContainer from "./content/SelectionContainer";
 import TeamStatsContainer from "./content/TeamStatsContainer";
 import Footer from "./footer/Footer";
 import Header from "./header/Header";
+import { MessagesContainer } from "./shared/MessagesContainer";
 const { Content } = Layout;
 
 const App = () => (
@@ -23,6 +24,7 @@ const App = () => (
           <Space direction="vertical" size="large">
             <SelectionContainer></SelectionContainer>
             <TeamStatsContainer></TeamStatsContainer>
+            <MessagesContainer></MessagesContainer>
           </Space>
         </Content>
         <Footer></Footer>
