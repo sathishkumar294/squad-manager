@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelect } from "../app/store/hooks";
 import { getSelectedPlayer, selectPlayer } from "../app/store/player";
 import { getSelectedTeam, removeAllPlayers } from "../app/store/teams";
-import { TeamSquadContainer } from "./TeamSquadContainer";
+import { TeamSquadContainer } from "../team/TeamSquadContainer";
 
 export const SelectedTeamSquadContainer = () => {
   const selectedTeam = useAppSelect(getSelectedTeam);

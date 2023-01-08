@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import "./App.css";
 import store from "./app/store";
 import SelectionContainer from "./content/SelectionContainer";
-import TeamStats from "./content/TeamStats";
+import TeamStatsContainer from "./content/TeamStatsContainer";
 import Footer from "./footer/Footer";
 import Header from "./header/Header";
 const { Content } = Layout;
@@ -22,7 +22,7 @@ const App = () => (
         <Content className="site-layout" style={{ padding: "32px 50px" }}>
           <Space direction="vertical" size="large">
             <SelectionContainer></SelectionContainer>
-            <TeamStats></TeamStats>
+            <TeamStatsContainer></TeamStatsContainer>
           </Space>
         </Content>
         <Footer></Footer>

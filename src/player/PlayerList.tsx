@@ -1,5 +1,5 @@
 import { Col, List, Row } from "antd";
-import PlayerListItem from "../player/PlayerListItem";
+import PlayerListItem from "./PlayerListItem";
 import Spinner from "../shared/Spinner";
 
 const PlayerList: React.FC<{

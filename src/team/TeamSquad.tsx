@@ -1,6 +1,6 @@
 import { Button, Card } from "antd";
 import React from "react";
-import PlayerList from "../content/PlayerList";
+import PlayerList from "../player/PlayerList";
 import TeamCover from "./TeamCover";
 
 const TeamSquad: React.FC<{

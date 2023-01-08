@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { allTeams } from "../app/store/teams";
 import Team from "../team/Team";
 
-const TeamStats = () => {
+const TeamStatsContainer = () => {
   const teams = useSelector(allTeams);
   return (
     <>
@@ -21,4 +21,4 @@ const TeamStats = () => {
   );
 };
 
-export default TeamStats;
+export default TeamStatsContainer;

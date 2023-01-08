@@ -1,4 +1,4 @@
-import TeamSquad from "../team/TeamSquad";
+import TeamSquad from "./TeamSquad";
 
 export const TeamSquadContainer: React.FC<{
   team?: Team;

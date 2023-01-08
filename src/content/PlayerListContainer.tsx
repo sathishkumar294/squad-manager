@@ -10,7 +10,7 @@ import {
   selectPlayer,
 } from "../app/store/player";
 import countries from "../constants/countries";
-import PlayerList from "./PlayerList";
+import PlayerList from "../player/PlayerList";
 
 export const PlayerListContainer: React.FC<{
   hidePlayerSelection?: boolean;
