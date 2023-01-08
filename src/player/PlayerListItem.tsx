@@ -1,5 +1,9 @@
-import { CheckCircleOutlined, CloseCircleTwoTone } from "@ant-design/icons";
-import { Avatar, List, Tooltip } from "antd";
+import {
+  CheckCircleOutlined,
+  CloseCircleTwoTone,
+  CloseOutlined,
+} from "@ant-design/icons";
+import { Avatar, Button, List, Tooltip } from "antd";
 import React from "react";
 
 const PlayerListItem: React.FC<{
@@ -37,12 +41,14 @@ const PlayerListItem: React.FC<{
       actions={
         removePlayerFromSquad
           ? [
-              <Tooltip title="">
-                <CloseCircleTwoTone
-                  twoToneColor="#C0392B"
+              <Tooltip title="Remove from squad">
+                <Button
+                  danger
+                  shape="circle"
+                  icon={<CloseOutlined />}
                   onClick={removePlayerFromSquad}
                   className="player-remove-icon"
-                />
+                ></Button>
               </Tooltip>,
             ]
           : []
