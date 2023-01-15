@@ -82,7 +82,6 @@ const PlayerList: React.FC<{
             }
           ></PlayerListItemContainer>
         )}
-        style={{ maxHeight: "720px", overflow: "scroll", width: "100%" }}
         className="player-list"
       ></List>
     </Space>
