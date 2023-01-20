@@ -29,13 +29,14 @@ const PlayerList: React.FC<{
   );
 
   const [sortedPlayers, setPlayers] = useState(getSortedPlayers("name"));
+  const [sort, setSort] = useState("name" as keyof Player);
   const sortPlayers = (sort: keyof Player) => {
-    setPlayers(getSortedPlayers(sort));
+    setSort(sort);
   };
 
   useEffect(
-    () => setPlayers(getSortedPlayers("name")),
-    [players, getSortedPlayers]
+    () => setPlayers(getSortedPlayers(sort)),
+    [players, sort, getSortedPlayers]
   );
 
   return loading ? (
