@@ -87,3 +87,14 @@ h4.ant-list-item-meta-title {
   top: auto;
   height: 100%;
 }
+
+.team-card {
+  min-width: 400px;
+}
+
+.team-card-space {
+  width: 100%;
+}
+.ant-space-item:has(.team-card-space-item) {
+  width: inherit;
+}

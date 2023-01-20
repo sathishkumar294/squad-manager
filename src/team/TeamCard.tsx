@@ -1,8 +1,9 @@
-import { Card, Progress, Space } from "antd";
+import { Card, Collapse, Progress, Space } from "antd";
 import React from "react";
 import { MAX_PLAYERS_PER_TEAM } from "../constants/config";
+import TeamComposition from "./TeamComposition";
 import TeamCover from "./TeamCover";
-
+const { Panel } = Collapse;
 const TeamCard: React.FC<{ team: Team; onClick?: () => void }> = ({
   team,
   onClick,
@@ -22,12 +23,17 @@ const TeamCard: React.FC<{ team: Team; onClick?: () => void }> = ({
       cover={<TeamCover team={team}></TeamCover>}
       onClick={onClick || (() => {})}
       hoverable={true}
+      className="team-card"
       style={{
-        minWidth: "200px",
         ...(!!onClick ? { cursor: "pointer" } : {}),
       }}
     >
-      <Space direction="vertical">
+      <Space
+        direction="vertical"
+        align="baseline"
+        className="team-card-space"
+        onClick={(e: any) => e.stopPropagation()}
+      >
         <Progress
           percent={Math.ceil(
             (100 * team.players.length) / MAX_PLAYERS_PER_TEAM
@@ -36,9 +42,18 @@ const TeamCard: React.FC<{ team: Team; onClick?: () => void }> = ({
           size="default"
           strokeColor={strokeColor}
         ></Progress>
-        <span>
-          {team.players.length}/{MAX_PLAYERS_PER_TEAM}
-        </span>
+        <Collapse className="team-card-space-item">
+          <Panel
+            key={""}
+            header={
+              <span>
+                {team.players.length}/{MAX_PLAYERS_PER_TEAM}
+              </span>
+            }
+          >
+            <TeamComposition team={team}></TeamComposition>
+          </Panel>
+        </Collapse>
       </Space>
     </Card>
   );
