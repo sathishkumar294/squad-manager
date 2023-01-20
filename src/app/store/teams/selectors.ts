@@ -30,10 +30,6 @@ export const teamCompositionStatus = (state: RootState) => {
           actual: players.filter((p) => p.type === t.type).length,
           min: t.minRequired,
         }))
-        .map((c) => {
-          console.log(c);
-          return c;
-        })
         .every(({ max, min, actual }) => actual <= max);
       console.log({ team: team.name, countryStatus, roleStatus });
       return { team: team.name, countryStatus, roleStatus };

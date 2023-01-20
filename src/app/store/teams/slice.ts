@@ -63,7 +63,7 @@ export const teamSlice = createSlice({
       }: PayloadAction<{ player: string; team: string }>
     ) => {
       const iTeam = state.teams.find((t) => t.name === team);
-      const idx = iTeam?.players.findIndex((p) => p.name === player) || -1;
+      const idx = iTeam?.players.findIndex((p) => p.name === player) ?? -1;
       if (idx > -1) iTeam?.players.splice(idx, 1);
       return state;
     },
