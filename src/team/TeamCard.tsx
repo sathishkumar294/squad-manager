@@ -1,7 +1,8 @@
-import { Card, Collapse, Drawer, Modal, Progress, Space } from "antd";
+import { WarningTwoTone } from "@ant-design/icons";
+import { Card, Collapse, Modal, Progress, Space } from "antd";
 import React, { useState } from "react";
-import { useAppDispatch } from "../app/store/hooks";
-import { selectTeam } from "../app/store/teams";
+import { useAppDispatch, useAppSelect } from "../app/store/hooks";
+import { selectTeam, teamCompositionStatus } from "../app/store/teams";
 import { MAX_PLAYERS_PER_TEAM } from "../constants/config";
 import { SelectedTeamSquadContainer } from "../content/SelectedTeamSquadContainer";
 import RemoveAllPlayersAction from "./RemoveAllPlayersAction";
@@ -14,6 +15,7 @@ const TeamCard: React.FC<{ team: Team; onClick?: () => void }> = ({
   onClick,
 }) => {
   const dispatch = useAppDispatch();
+  const isTeamComposition = useAppSelect(teamCompositionStatus);
   const [open, setOpen] = useState(false);
   let strokeColor = "#8E44AD";
   switch (Math.sign(team.players.length - MAX_PLAYERS_PER_TEAM)) {
@@ -65,6 +67,11 @@ const TeamCard: React.FC<{ team: Team; onClick?: () => void }> = ({
                 <span>
                   {team.players.length}/{MAX_PLAYERS_PER_TEAM}
                 </span>
+              }
+              extra={
+                !isTeamComposition[team.name] && (
+                  <WarningTwoTone twoToneColor="#E67E22"></WarningTwoTone>
+                )
               }
             >
               <TeamComposition team={team}></TeamComposition>
