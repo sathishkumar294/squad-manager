@@ -1,6 +1,7 @@
 import { CheckCircleOutlined, CloseOutlined } from "@ant-design/icons";
 import { Avatar, Button, List, Tooltip } from "antd";
 import React from "react";
+import countries from "../constants/countries";
 
 const PlayerListItem: React.FC<{
   player: Player;
@@ -9,6 +10,7 @@ const PlayerListItem: React.FC<{
   hideSelection?: boolean;
   removePlayerFromSquad?: () => void;
   playerTeam?: Team;
+  teamIconToShow?: "team" | "country";
 }> = ({
   player,
   onPlayerClick,
@@ -16,9 +18,10 @@ const PlayerListItem: React.FC<{
   hideSelection,
   removePlayerFromSquad,
   playerTeam,
+  teamIconToShow,
 }) => {
   const isPlayerSelected = hideSelection ? false : isSelected;
-
+  const playerCountry = countries.find((c) => player.country === c.name);
   const avatar = isPlayerSelected ? (
     <Avatar
       style={{ backgroundColor: "#52BE80" }}
@@ -53,8 +56,16 @@ const PlayerListItem: React.FC<{
         ...(playerTeam
           ? [
               <Avatar
-                key={playerTeam.name}
-                src={playerTeam.smallLogoUrl}
+                key={
+                  (teamIconToShow || "team") === "team"
+                    ? playerTeam.name
+                    : playerCountry?.name
+                }
+                src={
+                  (teamIconToShow || "team") === "team"
+                    ? playerTeam.smallLogoUrl
+                    : playerCountry?.logoURL
+                }
               ></Avatar>,
             ]
           : []),

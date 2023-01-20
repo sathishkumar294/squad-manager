@@ -27,6 +27,7 @@ const TeamSquad: React.FC<{
         onPlayerClick={onPlayerClick}
         hidePlayerSelection={true}
         removePlayerFromSquad={removePlayerFromSquad}
+        teamIconToShow="country"
       ></PlayerList>
     </Card>
   );

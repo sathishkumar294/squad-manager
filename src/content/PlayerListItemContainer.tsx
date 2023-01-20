@@ -1,3 +1,4 @@
+import React from "react";
 import { useAppSelect } from "../app/store/hooks";
 import { getSelectedPlayer } from "../app/store/player";
 import { getTeamForPlayer } from "../app/store/teams";
@@ -8,7 +9,16 @@ export const PlayerListItemContainer: React.FC<{
   onPlayerClick: () => void;
   hideSelection?: boolean;
   removePlayerFromSquad?: () => void;
-}> = ({ player, onPlayerClick, hideSelection, removePlayerFromSquad }) => {
+  teamIconToShow?: React.ComponentProps<
+    typeof PlayerListItem
+  >["teamIconToShow"];
+}> = ({
+  player,
+  onPlayerClick,
+  hideSelection,
+  removePlayerFromSquad,
+  teamIconToShow,
+}) => {
   const playerTeam = useAppSelect(getTeamForPlayer(player));
   const isSelected = useAppSelect(getSelectedPlayer)?.name === player.name;
   return (
@@ -20,6 +30,7 @@ export const PlayerListItemContainer: React.FC<{
         hideSelection,
         removePlayerFromSquad,
         playerTeam,
+        teamIconToShow,
       }}
     ></PlayerListItem>
   );

@@ -11,12 +11,16 @@ const PlayerList: React.FC<{
   onPlayerClick: (player: Player) => void;
   hidePlayerSelection?: boolean;
   removePlayerFromSquad?: (player: Player) => void;
+  teamIconToShow?: React.ComponentProps<
+    typeof PlayerListItemContainer
+  >["teamIconToShow"];
 }> = ({
   players,
   loading,
   onPlayerClick,
   hidePlayerSelection,
   removePlayerFromSquad,
+  teamIconToShow,
 }) => {
   const getSortedPlayers = useCallback(
     (sort: keyof Player) =>
@@ -80,6 +84,7 @@ const PlayerList: React.FC<{
                 ? () => removePlayerFromSquad(player)
                 : undefined
             }
+            teamIconToShow={teamIconToShow}
           ></PlayerListItemContainer>
         )}
         className="player-list"
