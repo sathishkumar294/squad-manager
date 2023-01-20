@@ -1,11 +1,12 @@
-import { TeamOutlined } from "@ant-design/icons";
-import { Button, Card, Modal, Tooltip } from "antd";
+import { Card, Modal } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeAllPlayers, selectTeam } from "../app/store/teams";
+import { selectTeam } from "../app/store/teams";
 import { SelectedTeamSquadContainer } from "../content/SelectedTeamSquadContainer";
+import RemoveAllPlayersAction from "./RemoveAllPlayersAction";
 import TeamComposition from "./TeamComposition";
 import TeamCover from "./TeamCover";
+import ViewSquadAction from "./ViewSquadAction";
 
 const Team: React.FC<{ team: Team }> = ({ team }) => {
   const dispatch = useDispatch();
@@ -28,19 +29,8 @@ const Team: React.FC<{ team: Team }> = ({ team }) => {
         bordered={false}
         style={{ minWidth: 400 }}
         actions={[
-          <Button
-            danger
-            onClick={() => dispatch(removeAllPlayers({ team: team.name }))}
-          >
-            Delete all
-          </Button>,
-          <Tooltip title="View squad">
-            <Button
-              shape="circle"
-              icon={<TeamOutlined />}
-              onClick={viewSquad}
-            />
-          </Tooltip>,
+          <RemoveAllPlayersAction name={team.name}></RemoveAllPlayersAction>,
+          <ViewSquadAction viewSquad={viewSquad}></ViewSquadAction>,
         ]}
       >
         <TeamComposition team={team}></TeamComposition>
