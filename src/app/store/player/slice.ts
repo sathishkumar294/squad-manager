@@ -44,7 +44,8 @@ export const playerSlice = createSlice({
       state.loadingPlayers = true;
     },
     cancelLoadingPlayers: (state) => {
-      state.loadingPlayers = false;      
+      state.loadingPlayers = false;
+      state.players = [];
     }
   },
 });
