@@ -1,4 +1,4 @@
-import { ConfigProvider, Layout, Space } from "antd";
+import { ConfigProvider, Layout } from "antd";
 import { Provider } from "react-redux";
 import "./App.css";
 import store from "./app/store";
@@ -19,11 +19,9 @@ const App = () => (
     >
       <Layout>
         <Header></Header>
-        <Content className="site-layout" style={{ padding: "32px 50px" }}>
-          <Space direction="vertical" size="large">
-            <SelectionContainer></SelectionContainer>
-            <MessagesContainer></MessagesContainer>
-          </Space>
+        <Content className="site-layout">
+          <SelectionContainer></SelectionContainer>
+          <MessagesContainer></MessagesContainer>
         </Content>
         <Footer></Footer>
       </Layout>

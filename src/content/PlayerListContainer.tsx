@@ -36,18 +36,14 @@ export const PlayerListContainer: React.FC<{
           ></Select>
         </Col>
       </Row>
-      <Row>
-        <Col span={24}>
-          <PlayerList
-            {...{
-              players,
-              loading,
-              onPlayerClick,
-              hidePlayerSelection,
-            }}
-          ></PlayerList>
-        </Col>
-      </Row>
+      <PlayerList
+        {...{
+          players,
+          loading,
+          onPlayerClick,
+          hidePlayerSelection,
+        }}
+      ></PlayerList>
     </>
   );
 };

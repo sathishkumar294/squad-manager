@@ -29,6 +29,10 @@
   color: #61dafb;
 }
 
+.site-layout {
+  padding: 32px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -50,7 +54,7 @@ h4.ant-list-item-meta-title {
 }
 
 .ant-list-item .player-remove-icon {
-  display: none;
+  /* display: none; */
   cursor: pointer;
 }
 
@@ -97,4 +101,13 @@ h4.ant-list-item-meta-title {
 }
 .ant-space-item:has(.team-card-space-item) {
   width: inherit;
+}
+
+.player-item {
+  cursor: pointer;
+}
+
+.selected-player {
+  background-color: #D2B4DE;
+  border-radius: 16px;
 }
