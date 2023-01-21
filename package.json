@@ -2,6 +2,7 @@
   "name": "squad-manager",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sathishkumar294.github.io/squad-manager/",
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "@reduxjs/toolkit": "^1.9.1",
