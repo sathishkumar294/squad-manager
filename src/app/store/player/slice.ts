@@ -43,5 +43,8 @@ export const playerSlice = createSlice({
     setPlayersLoading: (state) => {
       state.loadingPlayers = true;
     },
+    cancelLoadingPlayers: (state) => {
+      state.loadingPlayers = false;      
+    }
   },
 });
