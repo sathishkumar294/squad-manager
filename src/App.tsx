@@ -3,7 +3,6 @@ import { Provider } from "react-redux";
 import "./App.css";
 import store from "./app/store";
 import SelectionContainer from "./content/SelectionContainer";
-import TeamStatsContainer from "./content/TeamStatsContainer";
 import Footer from "./footer/Footer";
 import Header from "./header/Header";
 import { MessagesContainer } from "./shared/MessagesContainer";
@@ -23,7 +22,6 @@ const App = () => (
         <Content className="site-layout" style={{ padding: "32px 50px" }}>
           <Space direction="vertical" size="large">
             <SelectionContainer></SelectionContainer>
-            <TeamStatsContainer></TeamStatsContainer>
             <MessagesContainer></MessagesContainer>
           </Space>
         </Content>
