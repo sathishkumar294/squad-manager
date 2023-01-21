@@ -20,7 +20,7 @@ export const teamSlice = createSlice({
         payload: { player, team },
       }: PayloadAction<{ player: Player; team: string }>
     ) => {
-      console.log({ event: "addPlayer", player, team });
+      appLog({ event: "addPlayer", player, team });
       state.teams.forEach((t) => {
         const idx = t.players.findIndex((p) => p.name === player.name);
         if (idx > -1) t.players.splice(idx, 1);

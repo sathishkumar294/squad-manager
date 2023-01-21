@@ -1,6 +1,7 @@
 import { RootState } from "..";
 import countries from "../../../constants/countries";
 import playerTypes from "../../../constants/playerTypes";
+import appLog from "../../../utils/log";
 
 const getTeamState = (state: RootState) => state.teams;
 export const allTeams = (state: RootState) => getTeamState(state).teams;
@@ -31,7 +32,7 @@ export const teamCompositionStatus = (state: RootState) => {
           min: t.minRequired,
         }))
         .every(({ max, min, actual }) => actual <= max);
-      console.log({ team: team.name, countryStatus, roleStatus });
+      appLog({ team: team.name, countryStatus, roleStatus });
       return { team: team.name, countryStatus, roleStatus };
     })
     .reduce(
@@ -42,3 +43,5 @@ export const teamCompositionStatus = (state: RootState) => {
       {}
     ) as { [team: string]: boolean };
 };
+
+
