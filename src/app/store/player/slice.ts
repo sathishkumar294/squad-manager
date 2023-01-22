@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import countries from "../../../constants/countries";
 
 interface PlayersState {
   players: Player[];
@@ -12,6 +13,7 @@ export const playerSlice = createSlice({
   initialState: {
     players: [],
     loadingPlayers: false,
+    selectedCountry: countries.find((c) => c.name === "IND"),
   } as PlayersState,
   reducers: {
     loadPlayersForTeam: (
@@ -46,6 +48,6 @@ export const playerSlice = createSlice({
     cancelLoadingPlayers: (state) => {
       state.loadingPlayers = false;
       state.players = [];
-    }
+    },
   },
 });
