@@ -1,8 +1,6 @@
 import { Col, Row, Select } from "antd";
-import { useEffect } from "react";
 import { useAppDispatch, useAppSelect } from "../app/store/hooks";
 import {
-  fetchPlayersForSelectedCountry,
   getPlayers,
   isPlayersLoading,
   selectCountry,
@@ -20,9 +18,6 @@ export const PlayerListContainer: React.FC<{
   const players = useAppSelect(getPlayers);
   const loading = useAppSelect(isPlayersLoading);
   const onPlayerClick = (player: Player) => dispatch(selectPlayer({ player }));
-  useEffect(() => {
-    if (players.length === 0) dispatch(fetchPlayersForSelectedCountry());
-  }, [players, dispatch]);
 
   return (
     <>

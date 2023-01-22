@@ -10,7 +10,7 @@ export const {
   selectPlayer,
   pSelectCountry,
   setPlayersLoading,
-  cancelLoadingPlayers
+  cancelLoadingPlayers,
 } = playerSlice.actions;
 
 export const selectCountry =
@@ -28,11 +28,15 @@ export const fetchPlayersForSelectedCountry =
       return dispatch(
         loadPlayersForTeam({ country: selectedCountry?.name!, players })
       );
-    }
-    else dispatch(cancelPlayerLoadingOnError());
+    } else dispatch(cancelPlayerLoadingOnError());
   };
 
 const cancelPlayerLoadingOnError = () => (dispatch: Dispatch<any>) => {
   dispatch(cancelLoadingPlayers());
-  dispatch(showMessage({ message: 'Unable to fetch players for the selected team', type: 'error' }));
-}
+  dispatch(
+    showMessage({
+      message: "Unable to fetch players for the selected team",
+      type: "error",
+    })
+  );
+};
