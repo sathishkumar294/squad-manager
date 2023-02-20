@@ -3,15 +3,14 @@ import countries from "../../constants/countries";
 
 export namespace ESPNService {
   export const getPlayers = async (teamId: number) => {
-    const r = await axios.get<
-      string,
-      AxiosResponse<ESPNPlayerSearchResponse, string>
-    >(
-      `https://hs-consumer-api.espncricinfo.com/v1/pages/player/search?mode=BOTH&page=1&records=40&filterActive=true&filterTeamId=${teamId}&filterClassId=3&filterFormatLevel=ALL&sort=ALPHA_ASC`
-    ).catch(e => {
-      console.error({ e });
-      return { data: { results: [] } }
-    });
+    const r = await axios
+      .get<string, AxiosResponse<ESPNPlayerSearchResponse, string>>(
+        `https://hs-consumer-api.espncricinfo.com/v1/pages/player/search?mode=BOTH&page=1&records=40&filterActive=true&filterTeamId=${teamId}&filterClassId=3&filterFormatLevel=ALL&sort=ALPHA_ASC`
+      )
+      .catch((e) => {
+        console.error({ e });
+        return { data: { results: [] } };
+      });
     return r.data.results.map(getPlayerForEspnPlayer);
   };
   const getPlayerForEspnPlayer = (espnPlayer: ESPNPlayer): Player => {
@@ -23,7 +22,7 @@ export namespace ESPNService {
       portraitUrl:
         "https://img1.hscicdn.com/image/upload/f_auto,t_h_100_2x/lsci" +
         espnPlayer.imageUrl,
-      type: getPlayerTypeForEspnPlayerType(espnPlayer.playingRole),
+      type: getPlayerTypeForEspnPlayerType(espnPlayer.playingRoles?.[0]),
     };
   };
   const getPlayerTypeForEspnPlayerType = (
